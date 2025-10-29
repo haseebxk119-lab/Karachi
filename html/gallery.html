@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="../imgs/logo2.svg">
+    <title>Gallery</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --bg-light: #161a20;
+            --bg-light2: #15181b;
+            --bg-card: #222;
+            --primary: #05c46b;
+            --text-light: #f7f7f7;
+            --text-muted: #ccc;
+            --g-gap: 15px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-light);
+        }
+
+        /* Hero */
+        .about-hero {
+            background-image: url(../imgs/back5.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content-about {
+            max-width: 800px;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero-title-about {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 3.5rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-subtitle-about {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .gallery-wrapper {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px
+        }
+
+        .gallery-grid {
+            display: grid;
+            gap: var(--g-gap);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-auto-rows: 200px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: var(--bg-card);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .45);
+            cursor: pointer;
+        }
+
+        .gallery-item.featured {
+            grid-column: span 2;
+            grid-row: span 2
+        }
+
+        @media(max-width:900px) {
+            .gallery-item.featured {
+                grid-column: span 1;
+                grid-row: span 1
+            }
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .45s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06)
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, .45);
+            opacity: 0;
+            transition: .2s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1
+        }
+
+        .gallery-overlay i {
+            color: #fff;
+            font-size: 1.4rem
+        }
+
+        .glightbox {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, .86);
+            z-index: 2200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s;
+        }
+
+        .glightbox.open {
+            opacity: 1;
+            pointer-events: all
+        }
+
+        .glightbox .container {
+            max-width: 1100px;
+            width: calc(100% - 40px);
+            max-height: 85vh;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .glightbox .media {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-height: 85vh;
+            overflow: hidden;
+        }
+
+        .glightbox .media img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            transition: transform .3s ease;
+        }
+
+        .glightbox .meta {
+            width: 300px;
+            min-width: 220px;
+            color: #fff;
+            padding: 18px;
+        }
+
+        .glightbox .meta h3 {
+            color: var(--primary);
+            margin: 0 0 8px
+        }
+
+        .glightbox .meta p {
+            color: #ddd;
+            margin: 0;
+            font-size: 14px
+        }
+
+        .glightbox .controls {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            pointer-events: none;
+        }
+
+        .glightbox .btn {
+            pointer-events: all;
+            background: rgba(0, 0, 0, .5);
+            border: none;
+            color: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .glightbox .close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: rgba(0, 0, 0, .6);
+            border: none;
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 2500;
+        }
+
+        .glightbox .zoom-btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .06);
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @media(max-width:900px) {
+            .glightbox .container {
+                flex-direction: column-reverse
+            }
+
+            .glightbox .meta {
+                width: 100%
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-main-outer">
+            <div class="logo-box">
+                <img src="../imgs/logo2.svg" alt="Logo">
+                <span class="logo-text">OLYMPIC</span>
+            </div>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="menu-container" id="menu-container">
+                <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
+                <ul class="menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./gallery.html" class="active">Gallery</a></li>
+                    <li><a href="./news.html">News</a></li>
+                    <li><a href="./athelets.html">Athletes</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+                <div class="actions">
+                    <button>Sign up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="about-hero">
+        <header class="hero-content-about">
+            <h1 class="hero-title-about">Photo Gallery</h1>
+            <p class="hero-subtitle-about">Home-//-Gallery</p>
+        </header>
+    </div>
+
+    <main class="gallery-wrapper" aria-labelledby="galleryTitle">
+        <h2 id="galleryTitle" style="position:absolute;left:-9999px">Gallery</h2>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <div class="gallery-item featured" data-title="" data-caption="">
+                <img src="../imgs/gall1.jpg" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall3.webp" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall2.webp" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall4.jpg" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall6.jpg" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall5.jpg" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall8.webp" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall7.jpg" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall10.jpg" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall9.jpg" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall12.webp" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall11.jpg" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall14.jpg" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall13.jpg" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/gall15.jpg" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+            <div class="gallery-item" data-title="" data-caption="">
+                <img src="../imgs/h-ath3.webp" alt="">
+                <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass"></i></div>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="glightbox" id="glightbox" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="controls">
+            <button class="btn" id="prevBtn" title="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="btn" id="nextBtn" title="Next"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <div class="container" role="document">
+            <div class="media" id="lightMedia" aria-live="polite"></div>
+            <aside class="meta" id="lightMeta">
+                <h3 id="lightTitle">Title</h3>
+                <p id="lightCaption">Caption</p>
+                <button class="zoom-btn" id="zoomToggle" aria-pressed="false">Fit to screen</button>
+            </aside>
+
+            <button class="close-btn" id="lightClose" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>OLYMPIC</h3>
+                <p>Experience the Glory of the Olympic Games</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">➝ Home</a></li>
+                    <li><a href="./about.html" class="active">➝ About</a></li>
+                    <li><a href="./gallery.html">➝ Gallery</a></li>
+                    <li><a href="./news.html">➝ News</a></li>
+                    <li><a href="./athelets.html">➝ Athltes</a></li>
+                    <li><a href="./contact.html">➝ Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Olympic Channel</h3>
+                <ul>
+                    <li><a href="#">➝ TV Channel</a></li>
+                    <li><a href="#">➝ Live Events</a></li>
+                    <li><a href="#">➝ Original Series</a></li>
+                    <li><a href="#">➝ Corporate</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Have a Questions?</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> Maison Olympique, 1 Route de Vidy, 1007 Lausanne,
+                        Switzerland
+                    </li>
+                    <li><i class="fas fa-phone"></i> +41 21 621 61 11</li>
+                    <li><i class="fas fa-envelope"></i> tania.braga@olympic.org</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const menuToggle = document.getElementById("menu-toggle");
+        const menuContainer = document.getElementById("menu-container");
+        const navcloseBtn = document.getElementById("close-btn");
+
+        menuToggle.addEventListener("click", () => {
+            menuContainer.classList.add("show");
+        });
+
+        navcloseBtn.addEventListener("click", () => {
+            menuContainer.classList.remove("show");
+        });
+        const items = Array.from(document.querySelectorAll('.gallery-item'));
+        const galleryImgs = items.map(i => i.querySelector('img'));
+        const lightbox = document.getElementById('glightbox');
+        const lightMedia = document.getElementById('lightMedia');
+        const lightTitle = document.getElementById('lightTitle');
+        const lightCaption = document.getElementById('lightCaption');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const closeBtn = document.getElementById('lightClose');
+        const zoomToggle = document.getElementById('zoomToggle');
+
+        let current = 0;
+        let zoomed = false;
+
+        function openLightbox(index) {
+            current = index;
+            const item = items[index];
+            const img = item.querySelector('img');
+            const title = item.dataset.title || img.alt || '';
+            const caption = item.dataset.caption || '';
+
+            lightMedia.innerHTML = '';
+            const big = document.createElement('img');
+            big.src = img.src;
+            big.alt = img.alt || '';
+            big.style.transform = 'scale(1)';
+            big.dataset.fit = 'true';
+            lightMedia.appendChild(big);
+
+            lightTitle.textContent = title;
+            lightCaption.textContent = caption;
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            zoomed = false;
+            zoomToggle.textContent = 'Fit to screen';
+            zoomToggle.setAttribute('aria-pressed', 'false');
+
+            closeBtn.focus();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            lightMedia.innerHTML = '';
+        }
+
+        function nextImg() {
+            current = (current + 1) % items.length;
+            openLightbox(current);
+        }
+        function prevImg() {
+            current = (current - 1 + items.length) % items.length;
+            openLightbox(current);
+        }
+
+        function toggleZoom() {
+            const img = lightMedia.querySelector('img');
+            if (!img) return;
+            zoomed = !zoomed;
+            if (zoomed) {
+                img.style.transform = 'scale(1.9)';
+                img.style.cursor = 'zoom-out';
+                zoomToggle.textContent = 'Zoom out';
+                zoomToggle.setAttribute('aria-pressed', 'true');
+            } else {
+                img.style.transform = 'scale(1)';
+                img.style.cursor = 'zoom-in';
+                zoomToggle.textContent = 'Fit to screen';
+                zoomToggle.setAttribute('aria-pressed', 'false');
+            }
+        }
+
+        items.forEach((el, i) => {
+            el.addEventListener('click', () => openLightbox(i));
+        });
+
+        nextBtn.addEventListener('click', nextImg);
+        prevBtn.addEventListener('click', prevImg);
+        closeBtn.addEventListener('click', closeLightbox);
+        zoomToggle.addEventListener('click', toggleZoom);
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImg();
+            if (e.key === 'ArrowLeft') prevImg();
+            if (e.key === 'z' || e.key === 'Z') toggleZoom();
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        lightMedia.addEventListener('click', (e) => {
+            if (e.target.tagName === 'IMG') toggleZoom();
+        });
+
+        galleryImgs.forEach(img => {
+            img.addEventListener('error', () => {
+                img.style.objectFit = 'contain';
+                img.src = 'data:image/svg+xml;charset=UTF-8,' +
+                    encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="100%" height="100%" fill="#222"/><text x="50%" y="50%" fill="#888" font-size="20" text-anchor="middle" alignment-baseline="middle">Image not found</text></svg>');
+            });
+        });
+    </script>
+    <script src="../js/nav.js"></script>
+</body>
+
+</html>

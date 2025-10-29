@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../imgs/logo2.svg">
+    <title>News</title>
+    <link rel="icon" href="./imgs/logo2.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --bg-dark: #111;
+            --bg-light2: #15181b;
+            --bg-light: #161a20;
+            --bg-card: #222;
+            --primary: #05c46b;
+            --text-light: #f7f7f7;
+            --text-muted: #ccc;
+            --text-hover: #d6d6d6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .about-hero {
+            background-image: url(../imgs/back6.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content-about {
+            max-width: 800px;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero-title-about {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 3.5rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-subtitle-about {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .news-section {
+            background-color: var(--bg-light2);
+            padding: 80px 20px;
+            color: var(--text-light);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            background: var(--bg-light);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-category {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--bg-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+
+        .news-content h3 {
+            font-size: 1rem;
+            margin: 10px 0;
+            color: var(--text-light);
+        }
+
+        .news-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .news-btn {
+            text-decoration: none;
+            background: var(--primary);
+            color: var(--bg-dark);
+            font-weight: 700;
+            padding: 8px 15px;
+            clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+            transition: all 0.4s ease;
+        }
+
+        .news-btn:hover {
+            background: var(--bg-card);
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-main-outer">
+            <div class="logo-box">
+                <img src="../imgs/logo2.svg" alt="Logo">
+                <span class="logo-text">OLYMPIC</span>
+            </div>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="menu-container" id="menu-container">
+                <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
+                <ul class="menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./gallery.html">Gallery</a></li>
+                    <li><a href="./news.html" class="active">News</a></li>
+                    <li><a href="./athelets.html">Athletes</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+                <div class="actions">
+                    <button>Sign up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="about-hero">
+        <header class="hero-content-about">
+            <h1 class="hero-title-about">Latest Olympic News</h1>
+            <p class="hero-subtitle-about">Home-//-News</p>
+        </header>
+    </div>
+    <section class="news-section" id="news">
+        <div class="news-grid">
+            <div class="news-card">
+                <img src="../imgs/news1.avif" alt="News Image">
+                <div class="news-content">
+                    <span class="news-category">Cycling</span>
+                    <h3>Historic Win in Mountain Cycling</h3>
+                    <p>Overcoming rain and steep terrain, the champion crosses the finish line first.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="../imgs/news2.webp" alt="News Image">
+                <div class="news-content">
+                    <span class="news-category">Boxing</span>
+                    <h3>Golden Gloves Returns Victorious</h3>
+                    <p>After a decade, the veteran boxer surprises everyone with a comeback win.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="../imgs/news3.webp" alt="News Image">
+                <div class="news-content">
+                    <span class="news-category">Football</span>
+                    <h3>Olympic Final Ends in Dramatic Penalties</h3>
+                    <p>The tension was sky-high as the gold was decided in a nail-biting shootout.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="../imgs/news4.jpg" alt="News Image">
+                <div class="news-content">
+                    <span class="news-category">Rowing</span>
+                    <h3>Synchrony and Strength on Display</h3>
+                    <p>The national rowing team sweeps medals in record-breaking performances.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="../imgs/news5.jpg" alt="News Image">
+                <div class="news-content">
+                    <span class="news-category">Skateboarding</span>
+                    <h3>Skateboarder Lands Never-Seen Trick</h3>
+                    <p>Teen sensation amazes judges with a move never done in Olympic history.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="../imgs/news6.jpg" alt="News Image">
+                <div class="news-content">
+                    <span class="news-category">Tennis</span>
+                    <h3>Historic Gold Medal Matchup</h3>
+                    <p>The world’s top two rivals meet again for an unforgettable Olympic final.</p>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <img src="../imgs/news7.jpg" alt="News Image">
+                <div class="news-content">
+                    <span class="news-category">Basketball</span>
+                    <h3>Dream Team Clinches Another Gold</h3>
+                    <p>The unstoppable squad extends their Olympic legacy with another victory.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>OLYMPIC</h3>
+                <p>Experience the Glory of the Olympic Games</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">➝ Home</a></li>
+                    <li><a href="./about.html" class="active">➝ About</a></li>
+                    <li><a href="./gallery.html">➝ Gallery</a></li>
+                    <li><a href="./news.html">➝ News</a></li>
+                    <li><a href="./athelets.html">➝ Athltes</a></li>
+                    <li><a href="./contact.html">➝ Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Olympic Channel</h3>
+                <ul>
+                    <li><a href="#">➝ TV Channel</a></li>
+                    <li><a href="#">➝ Live Events</a></li>
+                    <li><a href="#">➝ Original Series</a></li>
+                    <li><a href="#">➝ Corporate</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Have a Questions?</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> Maison Olympique, 1 Route de Vidy, 1007 Lausanne,
+                        Switzerland
+                    </li>
+                    <li><i class="fas fa-phone"></i> +41 21 621 61 11</li>
+                    <li><i class="fas fa-envelope"></i> tania.braga@olympic.org</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

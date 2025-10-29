@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../imgs/logo2.svg">
+    <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --bg-dark: #111;
+            --bg-light2: #15181b;
+            --bg-light: #161a20;
+            --bg-card: #222;
+            --primary: #05c46b;
+            --text-light: #f7f7f7;
+            --text-muted: #ccc;
+            --text-hover: #d6d6d6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-muted);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-section {
+            padding: 80px 20px;
+            background-color: var(--bg-light);
+        }
+
+        .dark-section {
+            padding: 80px 20px;
+            background-color: var(--bg-dark);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-see-more {
+            background-color: var(--bg-card);
+            color: var(--text-light);
+        }
+
+        .btn-see-more:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+            color: var(--bg-light);
+        }
+
+        .btn-place-bid {
+            background-color: var(--primary);
+            color: var(--bg-light);
+        }
+
+        .btn-place-bid:hover {
+            background-color: var(--bg-card);
+            color: var(--primary);
+            transform: translateY(2px);
+        }
+
+        /* Hero */
+        .about-hero {
+            background-image: url(../imgs/back4.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content-about {
+            max-width: 800px;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero-title-about {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 3.5rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-subtitle-about {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        /* Story */
+        .story-content {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .story-text {
+            flex: 2;
+            line-height: 1.8;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .story-text h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .story-text p+p {
+            margin-top: 15px;
+        }
+
+        .story-timeline {
+            flex: 1;
+            padding: 20px;
+            background-color: var(--bg-light2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            border-left: 1px solid var(--primary);
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+        }
+
+        .timeline-year {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .timeline-event {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Mission */
+        .mission-section {
+            background-color: var(--bg-light);
+            padding: 80px 20px;
+        }
+
+        .mission-statement {
+            background: var(--bg-light2);
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 1px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .mission-statement h3 {
+            font-size: 1.4rem;
+            color: var(--text-hover);
+            margin-bottom: 15px;
+        }
+
+        .mission-statement p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .value-card {
+            background-color: var(--bg-light);
+            padding: 30px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, background-color 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--bg-card);
+        }
+
+        .value-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .value-card:hover i {
+            color: var(--text-light);
+        }
+
+        .value-card h4 {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .value-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Pillars */
+        .pillars-section {
+            background-color: var(--bg-light2);
+            padding: 80px 20px;
+        }
+
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .pillar-card {
+            display: flex;
+            gap: 20px;
+            padding: 25px;
+            background: var(--bg-light);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease;
+        }
+
+        .pillar-icon-box {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+
+        .pillar-icon-box i {
+            font-size: 2rem;
+            color: var(--bg-light);
+        }
+
+        .pillar-content h4 {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .pillar-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 1100px) {
+            .story-content {
+                gap: 25px;
+            }
+
+            .hero-title-about {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .story-content {
+                flex-direction: column;
+            }
+
+            .story-timeline {
+                margin-top: 30px;
+                width: 100%;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title-about {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pillar-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title-about {
+                font-size: 2.4rem;
+            }
+
+            .section-subtitle {
+                text-align: center;
+            }
+
+            .hero-content-about {
+                padding: 0 10px;
+            }
+
+          
+        }
+
+        @media (max-width: 500px) {
+            .about-hero {
+                height: 40vh;
+            }
+
+            .hero-title-about {
+                font-size: 2rem;
+            }
+
+            .mission-statement p {
+                font-size: 1rem;
+            }
+
+            .value-card i {
+                font-size: 2.5rem;
+            }
+
+            .pillar-card {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <div class="nav-main-outer">
+            <div class="logo-box">
+                <img src="../imgs/logo2.svg" alt="Logo">
+                <span class="logo-text">OLYMPIC</span>
+            </div>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="menu-container" id="menu-container">
+                <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
+                <ul class="menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./about.html" class="active">About</a></li>
+                    <li><a href="./gallery.html">Gallery</a></li>
+                    <li><a href="./news.html">News</a></li>
+                    <li><a href="./athelets.html">Athletes</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+                <div class="actions">
+                    <button>Sign up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="about-hero">
+        <header class="hero-content-about">
+            <h1 class="hero-title-about">About us</h1>
+            <p class="hero-subtitle-about">Home-//-About</p>
+        </header>
+    </div>
+
+    <section id="our-story" class="header-section" aria-labelledby="story-main-title">
+        <div class="section-container">
+            <p class="section-subtitle">The Olympic Story</p>
+            <div class="story-content">
+                <div class="story-text">
+                    <p>The **Ancient Olympic Games** were held in Olympia, Greece, from the 8th century BC to the 4th
+                        century AD. They were a religious and athletic festival that brought together city-states,
+                        observing a sacred truce for the duration of the games. This early tradition set the foundation:
+                        a temporary halt to conflicts in the name of athletic pursuit and human excellence.</p>
+                    <p>The **Modern Olympic Movement** was revived by **Baron Pierre de Coubertin** in the late 19th
+                        century. His vision was to promote physical education and international peace through a grand
+                        sporting event. The first modern Games took place in Athens in **1896**, marking the rebirth of
+                        a global legacy.</p>
+                    <p>Since then, the Games have grown into the world's foremost sporting event, expanding to include
+                        the **Winter Games** and the **Paralympic Games**. It stands as a beacon for inspiring billions,
+                        celebrating the extraordinary achievements of athletes, and promoting the values of respect,
+                        friendship, and excellence across borders. We continue to evolve, integrating new sports and
+                        embracing modern sustainability efforts to ensure the legacy lasts for generations.</p>
+                </div>
+
+                <aside class="story-timeline" aria-label="Key Historical Dates">
+                    <div class="timeline-item">
+                        <div class="timeline-year">776 BC</div>
+                        <div class="timeline-event">First recorded Ancient Olympic Games held in Olympia.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1894</div>
+                        <div class="timeline-event">Founding of the International Olympic Committee (IOC) in Paris.
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1896</div>
+                        <div class="timeline-event">The first modern Summer Olympic Games are held in Athens, Greece.
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1924</div>
+                        <div class="timeline-event">The first Winter Olympic Games are held in Chamonix, France.</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">1960</div>
+                        <div class="timeline-event">First Paralympic Games held in Rome, running alongside the Olympics.
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <section id="foundational-pillars" class="pillars-section" aria-labelledby="pillars-title">
+        <div class="section-container">
+            <p class="section-subtitle">Foundational Pillars</p>
+
+            <div class="pillar-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <div class="pillar-content">
+                        <h4>Global Solidarity</h4>
+                        <p>We believe in the unifying power of sport, transcending political, cultural, and geographic
+                            boundaries to foster a sense of global community.</p>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fa-solid fa-hands-clapping"></i>
+                    </div>
+                    <div class="pillar-content">
+                        <h4>Athlete Wellbeing</h4>
+                        <p>Our commitment is to protect and support athletes on and off the field, promoting clean
+                            sport, mental health awareness, and ethical conduct.</p>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <div class="pillar-content">
+                        <h4>Environmental Action</h4>
+                        <p>We strive to ensure the Games are planned and delivered in an environmentally responsible
+                            manner, contributing to climate change and sustainability goals.</p>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fa-solid fa-people-arrows"></i>
+                    </div>
+                    <div class="pillar-content">
+                        <h4>Social Responsibility</h4>
+                        <p>Using sport as a tool for social development, we promote gender equality, inclusion, and
+                            access to physical activity for all communities globally.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="our-mission" class="mission-section" aria-labelledby="mission-title">
+        <div class="section-container">
+            <p class="section-subtitle">Mission & Core Values</p>
+            <div class="mission-statement">
+                <h3>Our Core Mission Statement:</h3>
+                <p>To place **sport at the service of humanity** and to promote a peaceful society concerned with the
+                    preservation of human dignity. We aim to inspire and educate youth through sport practiced without
+                    discrimination, in a spirit of friendship, solidarity, and fair play.</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fa-solid fa-medal"></i>
+                    <h4>Excellence</h4>
+                    <p>This calls upon the athletic spirit to give the best of oneself, both on the field of play and in
+                        professional life. It is about striving to reach one’s potential and celebrating the hard work
+                        of the journey.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-handshake-angle"></i>
+                    <h4>Friendship</h4>
+                    <p>Encouraging mutual understanding and solidarity. It is the bond that links people together across
+                        the world, promoting a sense of unity and peace regardless of background or culture.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <h4>Respect</h4>
+                    <p>Upholding fair play, and respecting every individual—opponents, officials, and spectators. It
+                        also means valuing the cultural heritage and environment in which the Games take place.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>OLYMPIC</h3>
+                <p>Experience the Glory of the Olympic Games</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">➝ Home</a></li>
+                    <li><a href="./about.html">➝ About</a></li>
+                    <li><a href="./gallery.html">➝ Gallery</a></li>
+                    <li><a href="./athelets.html">➝ Athlets</a></li>
+                    <li><a href="./news.html">➝ News</a></li>
+                    <li><a href="./contact.html">➝ Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Olympic Channel</h3>
+                <ul>
+                    <li><a href="#">➝ TV Channel</a></li>
+                    <li><a href="#">➝ Live Events</a></li>
+                    <li><a href="#">➝ Original Series</a></li>
+                    <li><a href="#">➝ Corporate</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Have a Questions?</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> Maison Olympique, 1 Route de Vidy, 1007 Lausanne,
+                        Switzerland
+                    </li>
+                    <li><i class="fas fa-phone"></i> +41 21 621 61 11</li>
+                    <li><i class="fas fa-envelope"></i> tania.braga@olympic.org</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/nav.js"></script>
+</body>
+
+</html>

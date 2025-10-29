@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="../imgs/logo2.svg">
+    <title>Athletes</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        :root {
+            --bg-dark: #111;
+            --bg-light2: #15181b;
+            --bg-light: #161a20;
+            --bg-card: #222;
+            --primary: #05c46b;
+            --text-light: #f7f7f7;
+            --text-muted: #ccc;
+            --text-hover: #d6d6d6;
+            --gap: 18px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-light);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .about-hero {
+            background-image: url(../imgs/back1.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content-about {
+            max-width: 800px;
+            color: var(--text-light);
+            padding: 0 20px;
+        }
+
+        .hero-title-about {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 3.5rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-subtitle-about {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .gallery-wrapper {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .search-wrap {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            background: var(--bg-light2);
+            padding: 8px 10px;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .4);
+        }
+
+        .search-wrap input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-light);
+            width: 220px;
+        }
+
+        .select,
+        .btn {
+            padding: 8px 12px;
+            background: var(--bg-light2);
+            border: none;
+            color: var(--text-light);
+            font-weight: 700;
+            cursor: pointer;
+            transition-duration: 0.5s;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .4);
+        }
+
+        .select:hover,
+        .btn:hover {
+            background: var(--primary);
+            color: var(--text-light)
+        }
+
+        .filters {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .athlete-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--gap);
+        }
+
+        .athlete-card {
+            background: var(--bg-light2);
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .5);
+            transition: transform .25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .athlete-card:hover {
+            transform: translateY(-6px)
+        }
+
+        .athlete-thumb {
+            height: 220px;
+            overflow: hidden;
+            background: #000
+        }
+
+        .athlete-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .35s
+        }
+
+        .athlete-card:hover .athlete-thumb img {
+            transform: scale(1.05)
+        }
+
+        .athlete-body {
+            padding: 14px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between
+        }
+
+        .athlete-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+
+        .athlete-name {
+            font-size: 1.05rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 6px
+        }
+
+        .athlete-sport {
+            font-size: .82rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px
+        }
+
+        .athlete-stats {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap
+        }
+
+        .stat {
+            background: var(--bg-card);
+            padding: 6px 8px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: .85rem
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px
+        }
+
+        .card-actions .btn {
+            flex: 1;
+            text-align: center
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, .85);
+            z-index: 2500;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .2s ease;
+        }
+
+        .modal.open {
+            opacity: 1;
+            pointer-events: all
+        }
+
+        .modal-inner {
+            width: calc(100% - 40px);
+            max-width: 960px;
+            background: var(--bg-light2);
+            border-radius: 12px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 0;
+        }
+
+        @media(max-width:880px) {
+            .modal-inner {
+                grid-template-columns: 1fr;
+                max-height: 90vh;
+                overflow: auto
+            }
+        }
+
+        .modal-media {
+            background: #000;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 320px
+        }
+
+        .modal-media img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain
+        }
+
+        .modal-meta {
+            padding: 18px;
+            color: var(--text-muted)
+        }
+
+        .modal-meta h3 {
+            color: var(--primary);
+            margin: 0 0 8px
+        }
+
+        .modal-meta p {
+            margin: 6px 0
+        }
+
+        .modal-meta .close {
+            margin-top: 14px
+        }
+
+        .modal .close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: rgba(0, 0, 0, .6);
+            border: none;
+            color: #fff;
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 2600;
+        }
+
+        .load-more-wrap {
+            display: flex;
+            justify-content: center;
+            margin: 28px 0
+        }
+
+        .load-more {
+            padding: 10px 18px;
+            background: var(--primary);
+            border: none;
+            color: var(--text-light);
+            font-weight: 700;
+            cursor: pointer;
+            transition-duration: 0.5s;
+            clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
+        }
+
+        .load-more:hover {
+            background-color: var(--bg-light2);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-main-outer">
+            <div class="logo-box">
+                <img src="../imgs/logo2.svg" alt="Logo">
+                <span class="logo-text">OLYMPIC</span>
+            </div>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="menu-container" id="menu-container">
+                <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
+                <ul class="menu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./gallery.html">Gallery</a></li>
+                    <li><a href="./news.html">News</a></li>
+                    <li><a href="./athelets.html" class="active">Athletes</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+                <div class="actions">
+                    <button>Sign up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="about-hero">
+        <header class="hero-content-about">
+            <h1 class="hero-title-about">Athletes</h1>
+            <p class="hero-subtitle-about">Home-//-Athletes</p>
+        </header>
+    </div>
+    <main class="container" id="mainContent">
+        <div class="controls" role="region" aria-label="Athlete controls">
+            <div class="search-wrap" role="search">
+                <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted)"></i>
+                <input id="searchInput" type="search" placeholder="Search athlete name..."
+                    aria-label="Search athletes by name">
+            </div>
+
+            <div class="filters" aria-hidden="false">
+                <select id="sportFilter" class="select" aria-label="Filter by sport">
+                    <option value="all">All Sports</option>
+                    <option value="track">Track & Field</option>
+                    <option value="swimming">Swimming</option>
+                    <option value="gymnastics">Gymnastics</option>
+                    <option value="basketball">Basketball</option>
+                    <option value="cycling">Cycling</option>
+                    <option value="archery">Archery</option>
+                </select>
+
+                <select id="sortSelect" class="select" aria-label="Sort athletes">
+                    <option value="name-asc">Name A → Z</option>
+                    <option value="name-desc">Name Z → A</option>
+                    <option value="medals-desc">Most Medals</option>
+                    <option value="medals-asc">Least Medals</option>
+                </select>
+
+                <button id="resetBtn" class="btn" title="Reset filters">Reset</button>
+            </div>
+        </div>
+
+        <section class="athlete-grid" id="athleteGrid" aria-live="polite">
+            
+        </section>
+
+        <div class="load-more-wrap">
+            <button id="loadMore" class="load-more">Load more athletes</button>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="profileModal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <button class="close-btn" id="modalClose" aria-label="Close profile"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-inner" role="document">
+            <div class="modal-media" id="modalMedia"><!-- image injected --></div>
+            <div class="modal-meta" id="modalMeta">
+                <h3 id="modalName">Name</h3>
+                <p id="modalSport" class="athlete-sport">Sport</p>
+                <p id="modalBio">Short bio / achievements</p>
+                <div style="margin-top:12px">
+                    <strong style="color:var(--text-light)">Medals</strong>
+                    <div id="modalMedals" style="display:flex;gap:8px;margin-top:8px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>OLYMPIC</h3>
+                <p>Experience the Glory of the Olympic Games</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">➝ Home</a></li>
+                    <li><a href="./about.html" class="active">➝ About</a></li>
+                    <li><a href="./gallery.html">➝ Gallery</a></li>
+                    <li><a href="./news.html">➝ News</a></li>
+                    <li><a href="./athelets.html">➝ Athltes</a></li>
+                    <li><a href="./contact.html">➝ Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Olympic Channel</h3>
+                <ul>
+                    <li><a href="#">➝ TV Channel</a></li>
+                    <li><a href="#">➝ Live Events</a></li>
+                    <li><a href="#">➝ Original Series</a></li>
+                    <li><a href="#">➝ Corporate</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Have a Questions?</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> Maison Olympique, 1 Route de Vidy, 1007 Lausanne,
+                        Switzerland
+                    </li>
+                    <li><i class="fas fa-phone"></i> +41 21 621 61 11</li>
+                    <li><i class="fas fa-envelope"></i> tania.braga@olympic.org</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/nav.js"></script>
+    <script src="../js/script2.js"></script>
+</body>
+
+</html>

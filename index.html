@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./imgs/logo2.svg">
+    <title>OLYMPIC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-main-outer">
+            <div class="logo-box">
+                <img src="./imgs/logo2.svg" alt="Logo">
+                <span class="logo-text">OLYMPIC</span>
+            </div>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <div class="menu-container" id="menu-container">
+                <span class="close-btn" id="close-btn"><i class="fas fa-times"></i></span>
+                <ul class="menu">
+                    <li><a href="./index.html" class="active">Home</a></li>
+                    <li><a href="./html/about.html">About</a></li>
+                    <li><a href="./html/gallery.html">Gallery</a></li>
+                    <li><a href="./html/news.html">News</a></li>
+                    <li><a href="./html/athelets.html">Athletes</a></li>
+                    <li><a href="./html/contact.html">Contact</a></li>
+                </ul>
+                <div class="actions">
+                    <button>Sign up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="hero">
+        <header class="hero-section-home">
+            <div class="hero-content-home">
+                <p class="auction-text-home">OLYMPIC</p>
+                <h1 class="main-title-home">Celebrating the Spirit of the Olympics</h1>
+                <div class="hero-buttons">
+                    <a href="./html/gallery.html" class="btn btn-see-more">EXPLORE GALLERY</a>
+                    <a href="./html/athelets.html" class="btn btn-place-bid">View Athletes</a>
+                </div>
+            </div>
+        </header>
+    </div>
+    <section id="upcoming-games" aria-labelledby="upcoming-games-title">
+        <div class="ug-container">
+            <div class="ug-left">
+                <p class="ug-eyebrow">Upcoming Games</p>
+                <h2 id="upcoming-games-title">Los Angeles 2028 The Next Olympic Stage</h2>
+                <p class="ug-lead">
+                    A global celebration of athletic excellence — iconic venues, inclusive fan experiences, and
+                    unforgettable moments.
+                </p>
+
+                <div class="ug-countdown" role="timer">
+                    <div class="ug-timecard">
+                        <i class="fa-solid fa-calendar-days ug-ic"></i>
+                        <div class="ug-num" id="days">0</div>
+                        <div class="ug-label">Days</div>
+                    </div>
+                    <div class="ug-timecard">
+                        <i class="fa-solid fa-clock ug-ic"></i>
+                        <div class="ug-num" id="hours">00</div>
+                        <div class="ug-label">Hours</div>
+                    </div>
+                    <div class="ug-timecard">
+                        <i class="fa-solid fa-hourglass-half ug-ic"></i>
+                        <div class="ug-num" id="minutes">00</div>
+                        <div class="ug-label">Minutes</div>
+                    </div>
+                    <div class="ug-timecard">
+                        <i class="fa-solid fa-bolt ug-ic"></i>
+                        <div class="ug-num" id="seconds">00</div>
+                        <div class="ug-label">Seconds</div>
+                    </div>
+                </div>
+
+                <div class="ug-ctas">
+                    <a class="ug-btn primary" href="./html/contact.html #buyTickets">Buy Tickets</a>
+                </div>
+            </div>
+
+            <aside class="ug-right">
+                <div class="host-card">
+                    <div class="host-flag">
+                        <i class="fa-solid fa-flag-usa"></i>
+                    </div>
+                    <div class="host-content">
+                        <h3 class="host-title">Host: United States — Los Angeles</h3>
+                        <p class="host-meta"><strong>Opening Ceremony:</strong> July 14, 2028</p>
+                        <p class="host-desc">An iconic city with legacy venues and modern sustainability programs —
+                            expect immersive fan zones and world-class competition.</p>
+                        <ul class="host-list">
+                            <li><i class="fa-solid fa-landmark"></i> Iconic Venues</li>
+                            <li><i class="fa-solid fa-leaf"></i> Sustainability Focus</li>
+                            <li><i class="fa-solid fa-bus"></i> Enhanced Transit & Fan Zones</li>
+                        </ul>
+                        <div class="host-actions">
+                            <a class="host-link" href="./html/contact.html #iframe">Venue Map</a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section id="foundational-pillars" class="pillars-section" aria-labelledby="pillars-title">
+        <div class="section-container">
+            <header class="header">
+                <h2 class="title">Foundational Pillars</h2>
+                <a href="./html/about.html #foundational-pillars">
+                    <button class="view-all-btn">Explore</button>
+                </a>
+            </header>
+            <div class="pillar-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <div class="pillar-content">
+                        <h4>Global Solidarity</h4>
+                        <p>We believe in the unifying power of sport, transcending political, cultural, and geographic
+                            boundaries to foster a sense of global community.</p>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fa-solid fa-hands-clapping"></i>
+                    </div>
+                    <div class="pillar-content">
+                        <h4>Athlete Wellbeing</h4>
+                        <p>Our commitment is to protect and support athletes on and off the field, promoting clean
+                            sport, mental health awareness, and ethical conduct.</p>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <div class="pillar-content">
+                        <h4>Environmental Action</h4>
+                        <p>We strive to ensure the Games are planned and delivered in an environmentally responsible
+                            manner, contributing to climate change and sustainability goals.</p>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon-box">
+                        <i class="fa-solid fa-people-arrows"></i>
+                    </div>
+                    <div class="pillar-content">
+                        <h4>Social Responsibility</h4>
+                        <p>Using sport as a tool for social development, we promote gender equality, inclusion, and
+                            access to physical activity for all communities globally.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="athlete-spotlight-section" id="athlete-section">
+        <div class="section-container">
+            <header class="header">
+                <h2 class="title">ATHLETE SPOTLIGHT</h2>
+                <a href="./html/athelets.html">
+                    <button class="view-all-btn">View All Athletes</button>
+                </a>
+            </header>
+
+            <section class="athlete-grid">
+                <div class="athlete-card">
+                    <div class="athlete-img-container">
+                        <img src="./imgs/h-ath1.jpg" alt="Female track athlete sprinting" class="athlete-img">
+                    </div>
+                    <div class="athlete-info">
+                        <h3 class="athlete-name">Elara Vance</h3>
+                        <p class="athlete-sport">Track & Field</p>
+                        <p class="athlete-medal"><i class="fa-solid fa-medal"></i> Gold Medalist (400m)</p>
+                        <a href="./html/athelets.html" class="athlete-link">View All</a>
+                    </div>
+                </div>
+
+                <div class="athlete-card">
+                    <div class="athlete-img-container">
+                        <img src="./imgs/h-ath2.jpg" alt="Male swimmer diving" class="athlete-img">
+                    </div>
+                    <div class="athlete-info">
+                        <h3 class="athlete-name">Kaito Tanaka</h3>
+                        <p class="athlete-sport">Swimming</p>
+                        <p class="athlete-medal"><i class="fa-solid fa-medal" style="color: silver;"></i> Silver
+                            Medalist (100m Free)</p>
+                        <a href="./html/athelets.html" class="athlete-link">View All</a>
+                    </div>
+                </div>
+
+                <div class="athlete-card">
+                    <div class="athlete-img-container">
+                        <img src="./imgs/h-ath3.webp" alt="Female gymnast on beam" class="athlete-img">
+                    </div>
+                    <div class="athlete-info">
+                        <h3 class="athlete-name">Sofia Petrov</h3>
+                        <p class="athlete-sport">Gymnastics</p>
+                        <p class="athlete-medal"><i class="fa-solid fa-medal" style="color: #CD7F32;"></i> Bronze
+                            Medalist (All-Around)</p>
+                        <a href="./html/athelets.html" class="athlete-link">View All</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!--  Important Records Videos Section  -->
+    <section class="records-section" id="records">
+        <div class="records-container">
+            <header class="header">
+                <h2 class="title">Important Records & Highlights</h2>
+            </header>
+            <div class="records-grid">
+                <div class="record-card">
+                    <div class="video-box">
+                        <iframe src="./imgs/vid1.mp4" title="Michael Phelps Olympic Record" frameborder="0"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="record-content">
+                        <h3>Michael Phelps – Most Gold Medals in History</h3>
+                        <p>Watch highlights from Phelps' historic dominance in the pool.</p>
+                    </div>
+                </div>
+                <div class="record-card">
+                    <div class="video-box">
+                        <iframe src="./imgs/vid1.mp4" title="Tokyo 2020 Highlights" frameborder="0" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="record-content">
+                        <h3>Tokyo 2020 Highlights</h3>
+                        <p>Relive unforgettable Olympic moments from Tokyo 2020.</p>
+                    </div>
+                </div>
+                <div class="record-card">
+                    <div class="video-box">
+                        <iframe src="./imgs/vid1.mp4" title="Tokyo 2020 Highlights" frameborder="0" allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="record-content">
+                        <h3>Tokyo 2020 Highlights</h3>
+                        <p>Relive unforgettable Olympic moments from Tokyo 2020.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="news-section" id="news">
+        <div class="section-container">
+            <header class="header">
+                <h2 class="title">LATEST OLYMPIC NEWS</h2>
+            </header>
+
+            <div class="news-grid">
+                <div class="news-card">
+                    <img src="./imgs/h-news1.webp" alt="News Image">
+                    <div class="news-content">
+                        <span class="news-category">Athletics</span>
+                        <h3>World Record Broken in 100m Sprint</h3>
+                        <p>Lightning speed on the track as a new record astonishes the crowd in Paris.</p>
+                        <a href="./html/news.html" class="news-btn">Read All</a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <img src="./imgs/h-news2.webp" alt="News Image">
+                    <div class="news-content">
+                        <span class="news-category">Swimming</span>
+                        <h3>Rising Star Dominates the Pool</h3>
+                        <p>Seventeen-year-old prodigy claims her first gold medal in freestyle finals.</p>
+                        <a href="./html/news.html" class="news-btn">Read All</a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <img src="./imgs/h-news3.png" alt="News Image">
+                    <div class="news-content">
+                        <span class="news-category">Gymnastics</span>
+                        <h3>Grace and Power on the Beam</h3>
+                        <p>Fans witnessed an elegant yet powerful routine that earned perfect scores.</p>
+                        <a href="./html/news.html" class="news-btn">Read All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="olympic-gallery-section" id="gallery-section">
+        <div class="section-container">
+            <header class="header">
+                <h2 class="title">OLYMPIC PHOTO GALLERY</h2>
+                <a href="./html/gallery.html">
+                    <button class="view-all-btn">Explore All</button>
+                </a>
+            </header>
+
+            <section class="gallery-grid">
+                <a href="./html/gallery.html" class="gallery-item">
+                    <img src="./imgs/gall1.jpg" alt="Opening ceremony fireworks" class="gallery-img">
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass gallery-icon"></i></div>
+                </a>
+                <a href="./html/gallery.html" class="gallery-item">
+                    <img src="./imgs/gall9.jpg" alt="Podium celebration" class="gallery-img">
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass gallery-icon"></i></div>
+                </a>
+                <a href="./html/gallery.htm" class="gallery-item">
+                    <img src="./imgs/gall5.jpg" alt="Archery athlete preparing to shoot" class="gallery-img">
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass gallery-icon"></i></div>
+                </a>
+                <a href="./html/gallery.html" class="gallery-item">
+                    <img src="./imgs/gall13.jpg" alt="Basketball game in progress" class="gallery-img">
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass gallery-icon"></i></div>
+                </a>
+                <a href="./html/gallery.html" class="gallery-item">
+                    <img src="./imgs/gall4.jpg" alt="Cyclists racing" class="gallery-img">
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass gallery-icon"></i></div>
+                </a>
+                <a href="./html/gallery.html" class="gallery-item">
+                    <img src="./imgs/gall7.jpg" alt="Dive into the swimming pool" class="gallery-img">
+                    <div class="gallery-overlay"><i class="fa-solid fa-magnifying-glass gallery-icon"></i></div>
+                </a>
+            </section>
+        </div>
+    </div>
+    <section class="sponsors-section">
+        <div class="container">
+            <header class="header">
+                <h2 class="title">OLYMPIC Partners</h2>
+            </header>
+            <div class="sponsor-logos">
+                <marquee behavior="" direction="RIGHT">
+                    <img src="./imgs/part1.png" alt="Sponsor 1">
+                </marquee>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>OLYMPIC</h3>
+                <p>Experience the Glory of the Olympic Games</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">➝ Home</a></li>
+                    <li><a href="./html/about.html" class="active">➝ About</a></li>
+                    <li><a href="./html/gallery.html">➝ Gallery</a></li>
+                    <li><a href="./html/news.html">➝ News</a></li>
+                    <li><a href="./html/athelets.html">➝ Athltes</a></li>
+                    <li><a href="./html/contact.html">➝ Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Olympic Channel</h3>
+                <ul>
+                    <li><a href="#">➝ TV Channel</a></li>
+                    <li><a href="#">➝ Live Events</a></li>
+                    <li><a href="#">➝ Original Series</a></li>
+                    <li><a href="#">➝ Corporate</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h3>Have a Questions?</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> Maison Olympique, 1 Route de Vidy, 1007 Lausanne,
+                        Switzerland
+                    </li>
+                    <li><i class="fas fa-phone"></i> +41 21 621 61 11</li>
+                    <li><i class="fas fa-envelope"></i> tania.braga@olympic.org</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- ---------script--------- -->
+    <script src="./js/script.js"></script>
+    <script src="./js/nav.js"></script>
+</body>
+
+</html>
